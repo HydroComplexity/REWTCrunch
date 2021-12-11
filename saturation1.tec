@@ -1,0 +1,4 @@
+ TITLE = "Mineral Saturation State (log Q/Keq)" 
+VARIABLES = "X"          "Y"              "Z"            "C5H7O2NO2(s)"   "Albite"         "Anatase"        "Calcite"        "Chamosite"      "Anthophyllite"  "Kaolinite"      "Microcline"     "Muscovite"      "Quartz"         "Goethite"       "Lepidocrocite"  "Epidote"        "Magnetite"     
+ ZONE I=           1 , J=           1 , K=           1  F=POINT
+   8.50000000E+00   5.00000000E+01   5.00000000E+01   5.09777158E-08  -4.59882157E+00  -1.37018858E-06  -4.91846953E+00  -1.45205625E+01  -5.84961760E+01  -3.16645504E-01   8.66414856E-02  -2.00570482E+00   1.35338933E+00  -6.43716309E-03   8.92729830E-02  -1.67523331E+01  -4.83799466E+00

@@ -1,0 +1,4 @@
+ TITLE = "Mineral Area (m^2/m^3 PM)" 
+VARIABLES = "X"          "Y"              "Z"            "C5H7O2NO2(s)"   "Albite"         "Anatase"        "Calcite"        "Chamosite"      "Anthophyllite"  "Kaolinite"      "Microcline"     "Muscovite"      "Quartz"         "Goethite"       "Lepidocrocite"  "Epidote"        "Magnetite"     
+ ZONE I=           1 , J=           1 , K=           1  F=POINT
+   8.50000000E+00   5.00000000E+01   5.00000000E+01   1.00019197E+00   9.99999999E+01   9.99999999E+01   9.99999255E+01   9.06652840E+03   1.85943949E+04   1.56945533E+04   1.92095214E+05   9.28073917E+04   1.00000000E+02   9.99998113E+01   1.00000267E+02   9.99999906E+01   9.99999948E+01

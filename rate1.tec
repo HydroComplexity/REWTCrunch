@@ -1,0 +1,4 @@
+ TITLE = "Mineral Rate (mol/m^3/sec)" 
+VARIABLES = "X"          "Y"              "Z"            "C5H7O2NO2(s)"   "Albite"         "Anatase"        "Calcite"        "Chamosite"      "Anthophyllite"  "Kaolinite"      "Microcline"     "Muscovite"      "Quartz"         "Goethite"       "Lepidocrocite"  "Epidote"        "Magnetite"     
+ ZONE I=           1 , J=           1 , K=           1  F=POINT
+   8.50000000E+00   5.00000000E+01   5.00000000E+01   1.19826435E-10  -1.61787748E-11  -3.22071219E-16  -3.16223824E-09  -2.79510276E-10  -1.09229168E-11  -5.47960204E-11   1.68443928E-09  -2.64381824E-10   1.63569117E-11  -1.68925478E-08   1.77148125E-08  -1.02329294E-10  -1.69414372E-10

@@ -1,0 +1,8 @@
+time_units days                                                                                                                     
+spatial_profile 1.0 1.0                                                                                                             
+time_series influent1layer.out 1 1 1                                                                                                
+time_series_print all                                                                                                               
+time_series_units all                                                                                                               
+time_series_interval 1                                                                                                              
+ 
+ 

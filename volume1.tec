@@ -1,0 +1,4 @@
+ TITLE = "Mineral Volumes (m^3 mineral/m^3 porous medium)" 
+VARIABLES = "X"          "Y"              "Z"            "C5H7O2NO2(s)"   "Albite"         "Anatase"        "Calcite"        "Chamosite"      "Anthophyllite"  "Kaolinite"      "Microcline"     "Muscovite"      "Quartz"         "Goethite"       "Lepidocrocite"  "Epidote"        "Magnetite"     
+ ZONE I=           1 , J=           1 , K=           1  F=POINT
+   8.50000000E+00   5.00000000E+01   5.00000000E+01   1.12792475E-04   6.53849999E-02   3.57890000E-03   9.03218991E-03   2.83329742E-03   6.29639975E-03   6.05019959E-03   7.56280158E-02   3.27859968E-02   4.48420000E-01   1.07369696E-02   7.95263187E-03   8.74369877E-03   8.28849935E-03

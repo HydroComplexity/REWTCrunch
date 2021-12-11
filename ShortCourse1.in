@@ -1,0 +1,180 @@
+TITLE
+1D simulation of reactions in one layer of soil.
+END
+
+RUNTIME
+time_units days
+timestep_max 1
+timestep_init 1.E-9
+time_tolerance 0.1
+speciate_only false
+graphics tecplot
+master H+
+database OldRifleDatabase.dbs 
+gimrt true
+screen_output 10
+JennyDruhan true
+SetSurfaceAreaConstant true
+fix_saturation 0.38261
+END
+
+OUTPUT
+time_units days
+spatial_profile 1.0 1.0
+time_series influent1layer.out 1 1 1
+time_series_print all
+time_series_units all
+time_series_interval 1
+END
+
+AQUEOUS_KINETICS
+denitrification -pathway denitrification  1.0  -rate 20801.1713
+glucosetobio -pathway glucosetoco2 0.91 -pathway glucosetobio 0.09 -rate 50
+Nitrif -pathway Nitrif 1.0 -rate 0.0001394
+ironox -pathway ironox 1.0  -rate 0.0001
+END
+condition initial
+units mol/kg
+temperature 0.35051
+H+ -1.3173e-05
+C5H7O2NO2(aq) 0
+Acetic_acid(aq) 1
+C6H12O6 0.00014127
+NH4+ 0.00017145
+NO3- 1.4036e-06
+N2(aq) 1.4067e-05
+O2(aq) 0.00024813
+CO2(aq) 0.00024704
+SiO2(aq) 0.000545
+Al+++ 2.105e-09
+Mg++ 8.4833e-06
+Ca++ 0.00034853
+K+ 0.00037443
+Fe++ 1.0684e-05
+Fe+++ 1.4399e-14
+Ti(OH)4(aq) 2.7123e-09
+Na+ 2.365e-05
+! Mineral name <volume fraction m3/m3>
+C5H7O2NO2(s) 0.00011276
+Albite 0.065385 bulk_surface_area 100
+Anatase 0.0035789 bulk_surface_area 100
+Calcite 0.0090322 bulk_surface_area 100
+Chamosite 0.0028333 specific_surface_area 1
+Anthophyllite 0.0062964 specific_surface_area 1
+Kaolinite 0.0060502 specific_surface_area 1
+Microcline 0.075628 specific_surface_area 1
+Muscovite 0.032786 specific_surface_area 1
+Quartz 0.44842 bulk_surface_area 100
+Goethite 0.010737 bulk_surface_area 100
+Lepidocrocite 0.0079526 bulk_surface_area 100
+Epidote 0.0087437 bulk_surface_area 100
+Magnetite 0.0082885 bulk_surface_area 100
+END
+
+INITIAL_CONDITIONS
+initial 1-1
+END
+
+BOUNDARY_CONDITIONS
+x_begin initial flux
+x_end initial flux
+END
+
+DISCRETIZATION
+distance_units centimeters
+xzones 1 17
+END
+
+!FLOW
+!distance_units centimeters
+!time_units days
+!constant_flow 12.657
+!END
+
+!POROSITY
+!fix_porosity 0.32
+!END
+
+!TRANSPORT
+!distance_units centimeters
+!time_units second
+!gas_diffusion 1.6e-3
+!fix_diffusion 0.919e-05
+!formation_factor 1.00
+!cementation_exponent 1.90
+!dispersivity 4.0
+!END
+
+PRIMARY_SPECIES
+H+
+C5H7O2NO2(aq)
+Acetic_acid(aq)
+C6H12O6
+NH4+
+NO3-
+N2(aq)
+O2(aq)
+CO2(aq)
+SiO2(aq)
+Al+++
+Mg++
+Ca++
+K+
+Fe++
+Fe+++
+Ti(OH)4(aq)
+Na+
+END
+
+SECONDARY_SPECIES
+OH-
+NH3(aq)
+CO3--
+HCO3-
+AlO2-
+Fe(OH)2(aq) 
+FeOH+
+FeNO3++
+FeCO3(aq)
+FeCO3+  
+KOH(aq)
+MgCO3(aq) 
+MgHCO3+
+CaCO3(aq)
+CaHCO3+
+CaOH+
+NaOH(aq)
+NaCO3-
+NaHCO3(aq)
+HSiO3-
+NaHSiO3(aq)
+H2SiO4--
+HAlO2(aq)
+NaAlO2(aq)
+END
+
+!TEMPERATURE
+!set_temperature 25.0
+!END
+
+MINERALS
+C5H7O2NO2(s)  -label default -rate -2.0
+Albite -label default -rate -11.8
+Anatase -label default -rate -11
+Calcite -label default -rate -10.5
+Chamosite -label default -rate -12.52
+Anthophyllite -label default -rate -14.24
+Kaolinite -label default -rate -13.18
+Microcline -label default -rate -12.41
+Muscovite -label default -rate -13.55
+Quartz -label default -rate -14.12
+Goethite -label default -rate -7.94
+Lepidocrocite -label default -rate -9.11
+Epidote -label default -rate -11.99
+Magnetite -label default -rate -10.78
+END
+
+GASES
+CO2(g)
+O2(g)
+END

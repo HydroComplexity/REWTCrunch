@@ -1,0 +1,4 @@
+ TITLE = "Aqueous Rate (mol/L/s) " 
+VARIABLES = "X"          "Y"              "Z"            "denitrificatio" "glucosetobio"   "Nitrif"         "ironox"        
+ ZONE F=POINT,I=           1 , J=           1
+   8.50000000E+00   5.00000000E+01   5.00000000E+01   2.44393817E-04   6.98704462E-03   2.39001117E-08   1.00000000E-04

@@ -1,0 +1,243 @@
+! -------------------------------------------------------------------------------------------------
+!
+!  reaction stoichiometry
+!
+! -------------------------------------------------------------------------------------------------
+
+&Aqueous
+  name = 'C5H7O2N_O2_NH3_CO2'
+  type = 'catabolic'
+  stoichiometry = -0.05 'C5H7O2NO2(aq)' -0.3 'O2(aq)' 0.05 'NH3(aq)'  0.2 'H2O' 0.25 'CO2(aq)'
+  keq = 3
+/
+
+&Aqueous
+  name = 'NH4_O2'
+  type = 'catabolic'
+  stoichiometry = -2 'NH3(aq)' -3 'O2(aq)' 2 'NO2-' 2 'H+' 2 'H2O' 
+  keq = 3.457
+/
+
+&Aqueous
+  name = 'NO2_O2'
+  type = 'catabolic'
+  stoichiometry = -2 'NO2-' -1 'O2(aq)' 2 'NO3-'
+  keq = 15.31
+/
+
+&Aqueous
+  name = 'Nitrif'
+  type = 'catabolic'
+  stoichiometry = -2 'NH4+' -4 'O2(aq)' 2 'NO3-' 4 'H+' 2 'H2O' 
+  keq = 3.457
+/
+
+&Aqueous
+  name = 'glucosetobio'
+  type = 'anabolic'
+  !stoichiometry = -0.041667 'C6H12O6' -0.05 'NH4+'  0.05 'C5H7O2NO2(aq)' 0.05 'H+'
+  stoichiometry = -0.041667 'C6H12O6' 0.05 'C5H7O2NO2(aq)' 
+  keq = 0.0
+/
+
+&Aqueous
+  name = 'glucosetoco2'
+  type = 'catabolic'
+  stoichiometry = -0.08333 'C6H12O6' -0.5 'O2(aq)' 0.5 'CO2(aq)' 0.5 'H2O' 
+  keq = 3
+/
+
+&Aqueous
+  name = 'denitrification'
+  type = 'catabolic'
+  stoichiometry = -0.125 'Acetic_acid(aq)' -0.2 'NO3-' -0.2 'H+' 0.1 'N2(aq)' 0.25 'CO2(aq)' 0.35 'H2O'
+  keq = 15.31
+/
+
+&Aqueous
+  name = 'hydrolysis'
+  type = 'catabolic'
+  stoichiometry = -1 'N2H4CO(aq)' -2 'H2O' 2 'NH3(aq)' 1 'CO2(aq)' 1 'H2O'
+  keq = 30
+/
+
+&Aqueous
+  name = 'volatilization3'
+  type = 'catabolic'
+  !stoichiometry = -1 'NH4+' -1 '0H-' 1 'NH3(g)' 1 'H2O'
+  stoichiometry = -1 'NH4+' 1 'NH3(aq)' 1 'H+'
+  keq = 3
+/
+
+&Aqueous
+  name = 'cellulosetoco2'
+  type = 'catabolic'
+  stoichiometry = -1 'C6H10O5' -6 'O2(aq)' 6 'CO2(aq)' 5 'H2O' 
+  keq = 0
+/
+
+&Aqueous
+  name = 'cellulosetoglucose'
+  type = 'catabolic'
+  stoichiometry = -1 'C6H10O5' -1 'H2O' 1 'C6H12O6' 
+  keq = 5.3
+/
+
+&Aqueous
+  name = 'lignintoco2'
+  type = 'catabolic'
+  stoichiometry = -2 'C11H14O4' -25 'O2(aq)' 22 'CO2(aq)' 14 'H2O' 
+  keq = 0
+/
+
+&Aqueous
+  name = 'ironox'
+  type = 'catabolic'
+  stoichiometry = -1 'Fe++' -0.25 'O2(aq)' -1 'H+' 0.5 'H2O' 1 'Fe+++'
+  keq = 7.7654
+/
+
+! -------------------------------------------------------------------------------------------------
+!
+!  rate expressions
+!
+! -------------------------------------------------------------------------------------------------
+
+&AqueousKinetics
+  name          = 'NH4_O2'
+  label         = 'default'
+  type          = 'MonodBiomass'
+  rate25C       = 2.0
+  monod_terms   = 'tot_NH3(aq)' 0.0179e-6 'tot_NO2-' 9E-6 
+  !inhibition    = 'tot_NO3-'    1.06E-5
+  biomass       = 'C5H7O2NO2(s)'
+  bq            = -0.0
+  chi           = 1
+  direction     = -1
+/
+
+&AqueousKinetics
+  name          = 'Nitrif'
+  label         = 'default'
+  type          = 'irreversible'
+  rate25C       = 2.0
+  dependence   = 'tot_NH4+' 1.0
+/
+
+&AqueousKinetics
+  name          = 'NO2_O2'
+  label         = 'default'
+  type          = 'MonodBiomass'
+  rate25C       = 2.0
+  monod_terms   = 'tot_NO2-' 49E-6 
+  !inhibition    = 'tot_NO3-'    1.06E-5
+  biomass       = 'C5H7O2NO2(s)'
+  bq            = -0.0
+  chi           = 1
+  direction     = -1
+/
+
+&AqueousKinetics
+  name          = 'C5H7O2N_O2_NH3_CO2'
+  label         = 'default'
+  type          = 'MonodBiomass'
+  rate25C       = 2.0
+  monod_terms   = 'tot_NH3(aq)' 49E-6 
+  biomass       = 'C5H7O2NO2(s)'
+  bq            = -0.0
+  chi           = 1
+  direction     = -1
+/
+
+&AqueousKinetics
+  name          = 'glucosetobio'
+  label         = 'default'
+  type          = 'irreversible'
+  rate25C       = 2.0
+  dependence    = 'tot_C6H12O6' 1.0
+/
+
+&AqueousKinetics
+  name          = 'glucosetoco2'
+  label         = 'default'
+  type          = 'irreversible'
+  rate25C       = 2.0
+  dependence    = 'tot_C6H12O6' 1.0
+/
+
+&AqueousKinetics
+  name          = 'denitrification'
+  label         = 'default'
+  type          = 'MonodBiomass'
+  rate25C       = 2.0
+  monod_terms   = 'tot_NO3-' 1.214E-2
+  biomass       = 'C5H7O2NO2(s)'
+  bq            = -0.0
+  chi           = 1
+  direction     = -1
+/
+
+&AqueousKinetics
+  name          = 'hydrolysis'
+  label         = 'default'
+  type          = 'irreversible'
+  rate25C       = 2.0
+  dependence   = 'tot_N2H4CO(aq)' 1.0
+/
+
+&AqueousKinetics
+  name          = 'volatilization3'
+  label         = 'default'
+  type          = 'MonodBiomass'
+  rate25C       = 2.0
+  monod_terms   = 'tot_NH4+' 0.9E-3
+  biomass       = 'C5H7O2NO2(s)'
+  bq            = -0.0
+  chi           = 1
+  direction     = -1
+/
+
+&AqueousKinetics
+  name          = 'cellulosetoco2'
+  label         = 'default'
+  type          = 'MonodBiomass'
+  rate25C       = 2.0
+  monod_terms   = 'tot_C6H10O5' 0.9E-3
+  biomass       = 'C5H7O2NO2(s)'
+  bq            = -0.0
+  chi           = 1
+  direction     = -1
+/
+
+&AqueousKinetics
+  name          = 'cellulosetoglucose'
+  label         = 'default'
+  type          = 'MonodBiomass'
+  rate25C       = 2.0
+  monod_terms   = 'tot_C6H10O5' 0.9E-3
+  biomass       = 'C5H7O2NO2(s)'
+  bq            = -0.0
+  chi           = 1
+  direction     = -1
+/
+
+&AqueousKinetics
+  name          = 'lignintoco2'
+  label         = 'default'
+  type          = 'MonodBiomass'
+  rate25C       = 2.0
+  monod_terms   = 'tot_C11H14O4' 0.9E-3
+  biomass       = 'C5H7O2NO2(s)'
+  bq            = -0.0
+  chi           = 1
+  direction     = -1
+/
+
+&AqueousKinetics
+  name          = 'ironox'
+  label         = 'default'
+  type          = 'irreversible'
+  rate25C       = 2.0
+  !dependence   = 'tot_Fe++' 1.0
+/
+
