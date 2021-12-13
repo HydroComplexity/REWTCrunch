@@ -6,10 +6,10 @@ clear all
 clc
 
 % Open REWTCrunch and REWT results files
-crex = load('your_REWTCrunch_with_exudation_results');
-crnoex = load('your_REWTCrunch_withOUT_exudation_results');
-REWT = load('your_REWT_withexudation_results');
-REWTnoex = load('your_REWT_withOUT_exudation_results');
+crex = load('_REWTCrunchresults_corn_ex');
+crnoex = load('_REWTCrunchresults_corn_noex');
+REWT = load('_REWTresults_corn_EX');
+REWTnoex = load('_REWTresults_corn_NOEX');
 
 
 %Other necessary variables
