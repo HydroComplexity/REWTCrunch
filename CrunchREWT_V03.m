@@ -500,8 +500,8 @@ if from_previous_data ==0
     VARIABLES.O2 = repmat(2.4813E-04,12,1); 
     O2_constant = repmat(2.4813E-04,12,1); % For now, holding this constant
     VARIABLES.CO2 = repmat(1.0606e-08,12,1); 
-    VARIABLES.CO2gas = repmat(1.3456298E-06,12,1);
-    VARIABLES.O2gas = repmat(0.116,12,1);
+    %VARIABLES.CO2gas = repmat(1.3456298E-06,12,1);
+    %VARIABLES.O2gas = repmat(0.116,12,1);
     VARIABLES.Hplus = repmat(3.28978669598122E-06,12,1); 
     VARIABLES.HCO3 = repmat(1.976E-14,12,1); 
     VARIABLES.CO32m = repmat(1.976E-14,12,1); 
@@ -742,11 +742,11 @@ for day=1:1:365*how_many_year
     Nl = VARIABLES.Nl;%       Nl = nitrogen concentration in litter pool [gN / m^3]
     N2 = VARIABLES.N2; %        for Crunch
     CO2 = VARIABLES.CO2; %      for Crunch
-    CO2gas = VARIABLES.CO2gas;          % for Crunch
+    %CO2gas = VARIABLES.CO2gas;          % for Crunch
     HCO3 = VARIABLES.HCO3; %        for Crunch
     CO32m = VARIABLES.CO32m; %      for Crunch
     O2 = VARIABLES.O2; %            for Crunch
-    O2gas = VARIABLES.O2gas; %              for Crunch
+    %O2gas = VARIABLES.O2gas; %              for Crunch
     Hplus = VARIABLES.Hplus; %          for Crunch 
     pH = VARIABLES.pH;
     glucose = VARIABLES.glucose; % concentration of glucose left in soil g/m3
@@ -922,7 +922,7 @@ for ss=1:N
         [pH_crunch,Cb_aq,aceticacid_crunch,C6H12O6_crunch,...
                     NH4_crunch,NO3_crunch,N2_crunch,O2_crunch,...
                     CO2_crunch,HCO3_crunch,CO32m_crunch,Hplus_crunch,...
-                    Cb_crunch,NH3_crunch,CO2gas_crunch,O2gas_crunch,...
+                    Cb_crunch,NH3_crunch,... %CO2gas_crunch,O2gas_crunch,...
                     SiO2_crunch,Al3p_crunch,Mg2p_crunch,Ca2p_crunch,...
                     Kp_crunch,Fe2p_crunch,Fe3p_crunch,TiO4H4_crunch,Nap_crunch,...
                     Albite_crunch, Anatase_crunch, Calcite_crunch,Chamosite_crunch,...
@@ -939,9 +939,9 @@ for ss=1:N
         N2_cr(ss) = N2_crunch;
         Nit_cr(ss) = NO3_crunch.*62.0049./0.001.*sm(ss);
         O2_cr(ss) = O2_crunch;
-        O2gas_cr(ss) = O2gas_crunch;
+        %O2gas_cr(ss) = O2gas_crunch;
         CO2_cr(ss) = CO2_crunch;   
-        CO2gas_cr(ss) = CO2gas_crunch;
+        %CO2gas_cr(ss) = CO2gas_crunch;
         HCO3_cr(ss) = HCO3_crunch;   
         CO32m_cr(ss) = CO32m_crunch;
         aceticacid_cr(ss) = aceticacid_crunch;
@@ -979,9 +979,9 @@ for ss=1:N
         N2_cr(ss) = N2(ss);
         Nit_cr(ss) = Nit(ss);
         O2_cr(ss) = O2(ss);
-        O2gas_cr(ss) = O2gas(ss);
+        %O2gas_cr(ss) = O2gas(ss);
         CO2_cr(ss) = CO2(ss);
-        CO2gas_cr(ss) = CO2gas(ss);
+        %CO2gas_cr(ss) = CO2gas(ss);
         HCO3_cr(ss) = HCO3(ss);   
         CO32m_cr(ss) = CO32m(ss);
         aceticacid_cr(ss) = aceticacid(ss);
@@ -1018,9 +1018,9 @@ NH3_cr = reshapearray(NH3_cr);
 Amm_cr = reshapearray(Amm_cr);
 Nit_cr = reshapearray(Nit_cr);
 O2_cr = reshapearray(O2_cr);
-O2gas_cr = reshapearray(O2gas_cr);
+%O2gas_cr = reshapearray(O2gas_cr);
 CO2_cr = reshapearray(CO2_cr);
-CO2gas_cr = reshapearray(CO2gas_cr);
+%CO2gas_cr = reshapearray(CO2gas_cr);
 N2_cr = reshapearray(N2_cr);
 HCO3_cr = reshapearray(HCO3_cr);
 CO32m_cr = reshapearray(CO32m_cr);
@@ -1448,11 +1448,6 @@ omega = 10^-13;
 [LCH_Nap_Top_Up_m3,LCH_Nap_Bottom_Up_m3,LCH_Nap,LCH_Nap_m2] = ...
     fixnegative_solute(Nap_cr,LCH_Nap_Top_Up_m3,LCH_Nap_Bottom_Down_m3,dz_mm, nl_soil);
 
-% CN_solve_negative_N_SRM(); 
-      damm_leach2(:,day) = LCH_Amm;
-      dnit_leach2(:,day) = LCH_Nit;
-      dglu_leach2(:,day) = LCH_glucose;
-      dHp_leach2(:,day) = LCH_Hplus;
   
     %%-------------------------------------------------------------------%% 
     % Update all concentrations
@@ -1834,8 +1829,8 @@ omega = 10^-13;
 CO2gaslost_print(:,day) = respCgas + resp2gas;  % total respired C from crunch/exudates and decomposition
 
 % Crunch Extras
-    CO2gas_print(:,day) = CO2gas_cr;  % this will change when diffusion incorporated
-    O2gas_print(:,day) = O2gas_cr;  % this will change when diffusion incorporated
+    %CO2gas_print(:,day) = CO2gas_cr;  % this will change when diffusion incorporated
+    %O2gas_print(:,day) = O2gas_cr;  % this will change when diffusion incorporated
     CO2_print(:,day) = CO2_new; % mol/kg 
     N2_print(:,day) = N2_new; % mol/kg 
     O2_print(:,day) = O2_new; % mol/kg 
