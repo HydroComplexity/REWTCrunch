@@ -424,7 +424,7 @@ SWITCHES.CN.Indep_MIN_IMM_on=0;
 % 20. Poporato's fSd & fNd
 SWITCHES.CN.PoporatofSdfNd_on=1; 
 % 
-% 20. Root exudation
+% 20. Root exudation (1 = exudation on, 0 = no exudation)
 SWITCHES.CN.exudation=1; 
 
 % 21. Rainwater chemistry (10/22/2020 https://doi.org/10.1016/j.envres.2020.109872)
@@ -834,7 +834,7 @@ for day=1:1:365*how_many_year
         VARIABLES.SOIL.Br = Br;          
     else 
         Cbglu = [];
-        cexg
+        fflav = zeros(N,1);
     end
     
 %% CRUNCH/TRANSFORM FIRST
@@ -844,6 +844,7 @@ for day=1:1:365*how_many_year
 % Denitrification rate factors: TD.*WD.*MD *rate
     [F_D] = CN_denitrification_factor(VARIABLES, VERTSTRUC, smp, temp_layer_day_point(:,day), Cb);
 % Nitrification rate factor: (1-fflav)*fSn.*fTn * rate
+
     [F_N] = CN_nitrification_factor(fSn,fTn,fflav);
 
 %declare var name as they appear in crunch
@@ -1917,4 +1918,6 @@ end
 disp('Simulation End')
 toc
 
+save('_REWTCrunchresults_corn_ex.mat')
+%save('_REWTCrunchresults_corn_noex.mat')
 
